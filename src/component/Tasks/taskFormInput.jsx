@@ -1,5 +1,6 @@
 import Input from "./input";
 import Button from "./../Button/index";
+
 export default function FormInput({
   tasks,
   setTasks,
@@ -9,23 +10,20 @@ export default function FormInput({
   setDeadline,
   status,
   setStatus,
+  setAddBook,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setTasks([...tasks, { task, deadline, status }]);
-    setTask("");
-    setDeadline("");
-    setStatus("");
+    setAddBook(false);
   };
 
-  console.log(tasks);
   return (
     <form
       className="flex flex-col w-[36em] border rounded bg-white"
       onSubmit={handleSubmit}
     >
       <h1 className="px-3 py-3 text-3xl text-center">Add Task</h1>
-      <div className="py-3"></div>
       <Input
         htmlFor="name"
         type="text"
@@ -55,8 +53,8 @@ export default function FormInput({
         onChange={(e) => setStatus(e.target.value)}
       />
       <div className="flex justify-end gap-3 px-4 py-4">
-        <Button variant={"danger"}>Cancel</Button>
-        <Button type="submit"> Add Task</Button>
+        <Button variant="danger">Cancel</Button>
+        <Button type="submit">Add Task</Button>
       </div>
     </form>
   );
