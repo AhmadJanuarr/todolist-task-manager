@@ -1,6 +1,6 @@
 import Input from "./input";
 import Button from "./../Button/index";
-
+import { useId } from "react";
 export default function FormInput({
   tasks,
   setTasks,
@@ -12,9 +12,10 @@ export default function FormInput({
   setStatus,
   setAddBook,
 }) {
+  const id = useId();
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTasks([...tasks, { task, deadline, status }]);
+    setTasks([...tasks, { id, task, deadline, status }]);
     setAddBook(false);
   };
 
@@ -53,7 +54,9 @@ export default function FormInput({
         onChange={(e) => setStatus(e.target.value)}
       />
       <div className="flex justify-end gap-3 px-4 py-4">
-        <Button variant="danger">Cancel</Button>
+        <Button variant="danger" onClick={() => setAddBook(false)}>
+          Cancel
+        </Button>
         <Button type="submit">Add Task</Button>
       </div>
     </form>

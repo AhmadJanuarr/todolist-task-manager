@@ -23,12 +23,12 @@ function TaskHeader({ addBook, setAddBook }) {
   );
 }
 
-export default function TasksList({ addBook, setAddBook }) {
+export default function TasksList({ addBook, setAddBook, tasks }) {
   return (
     <>
       <div className="w-full h-[42em] border rounded px-7 py-6">
         <TaskHeader addBook={addBook} setAddBook={setAddBook} />
-        <Task />
+        <Task tasks={tasks} />
       </div>
     </>
   );

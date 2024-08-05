@@ -8,14 +8,16 @@ function App() {
   const [task, setTask] = useState("");
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("");
-  const [isFormInvsible, setIsFormInvisible] = useState(false);
+  console.log(tasks);
+
   return (
     <>
       <div className="relative flex justify-center w-screen h-screen bg-gray-300 font-kreon text-primary">
         <div className="w-1/2">
           <Header />
-          <TasksList addBook={addBook} setAddBook={setAddBook} />{" "}
+          <TasksList addBook={addBook} setAddBook={setAddBook} tasks={tasks} />
         </div>
+
         {addBook && (
           <TaskForm
             tasks={tasks}
@@ -26,6 +28,7 @@ function App() {
             setDeadline={setDeadline}
             status={status}
             setStatus={setStatus}
+            setAddBook={setAddBook}
           />
         )}
       </div>

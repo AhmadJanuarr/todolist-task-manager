@@ -21,6 +21,7 @@ export default function Input({
           className="w-1/2 px-3 py-1 border rounded"
           value={value}
           onChange={onChange}
+          required
         >
           <option value="" disabled>
             Select status...
@@ -45,6 +46,7 @@ export default function Input({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        required
         className="w-1/2 px-3 py-1 border rounded"
       />
     </div>
