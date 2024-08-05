@@ -1,17 +1,7 @@
-import { useEffect } from "react";
 import { useState } from "react";
+
 export default function Task({ tasks }) {
   const [selectedTasks, setSelectedTasks] = useState([]);
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("tasks"));
-    if (items) setItems(items);
-  }, []);
 
   const handleCheckBoxChange = (taskId) => {
     if (selectedTasks.includes(taskId)) {
@@ -21,12 +11,12 @@ export default function Task({ tasks }) {
     }
   };
 
-  const listItem = items.map((index, items) => {
-    const { id, task: taskName, deadline, status } = items;
+  const listItem = tasks.map((task) => {
+    const { id, task: taskName, deadline, status } = task;
     const truncatedTaskName =
       taskName.length > 20 ? taskName.substring(0, 20) + "..." : taskName;
     return (
-      <tr key={index} className="border-b text-[16px]">
+      <tr key={id} className="border-b text-[16px]">
         <td className="px-5 pl-5" width={"5%"}>
           <input
             type="checkbox"
