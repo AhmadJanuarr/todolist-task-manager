@@ -1,6 +1,40 @@
-export default function Task() {
+import { useState } from "react";
+export default function Task({ tasks }) {
+  const [selectedTasks, setSelectedTasks] = useState([]);
+
+  const handleCheckBoxChange = (taskId) => {
+    if (selectedTasks.includes(taskId)) {
+      setSelectedTasks(selectedTasks.filter((id) => id !== taskId));
+    } else {
+      setSelectedTasks([...selectedTasks, taskId]);
+    }
+  };
+
+  const listItem = tasks.map((task, index) => {
+    return (
+      <tr key={index} className="border-b ">
+        <td className="pl-5 " width={"5%"}>
+          <input
+            type="checkbox"
+            checked={selectedTasks.includes(task.id)}
+            onChange={() => handleCheckBoxChange(task.id)}
+          />
+        </td>
+        <td className="py-5" width={"55%"}>
+          {task.task}
+        </td>
+        <td className="py-5" width={"20%"}>
+          {task.deadline}
+        </td>
+        <td className="py-5" width={"20%"}>
+          {task.status}
+        </td>
+      </tr>
+    );
+  });
+
   return (
-    <table className="w-full text-xl text-left border">
+    <table className="w-full text-xl text-left ">
       <thead>
         <tr>
           <th width="60%" colSpan={2}>
@@ -10,8 +44,7 @@ export default function Task() {
           <th>Status</th>
         </tr>
       </thead>
-
-      <tbody>{/* Tasl row */}</tbody>
+      <tbody>{listItem}</tbody>
     </table>
   );
 }
