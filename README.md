@@ -1,10 +1,10 @@
 ## Demo App
 
-### Devices Dekstop
+### Devices Mobile
 
 <img src="./src/assets/image(1).png">
 
-### Devices Mobile
+### Devices Dekstop
 
 <img src="./src/assets/image(2).png">
 
