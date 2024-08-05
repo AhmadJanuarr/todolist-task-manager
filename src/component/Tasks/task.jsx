@@ -1,6 +1,7 @@
-export default function Task() {
+export default function Task({ tasks }) {
+  console.log(tasks);
   return (
-    <table className="w-full border text-left text-xl">
+    <table className="w-full text-xl text-left border">
       <thead>
         <tr>
           <th width="60%">Task Name</th>
@@ -9,7 +10,9 @@ export default function Task() {
         </tr>
       </thead>
 
-      <tbody>{/* Tasl row */}</tbody>
+      <tbody>
+      {tasks.map(())}
+      </tbody>
     </table>
   );
 }
