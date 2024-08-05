@@ -1,12 +1,12 @@
 import Button from "../Button";
 import Task from "./task";
 
-function TaskHeader({ addBook, setAddBook }) {
+function TaskHeader({ addTaskForm, setAddTaskForm }) {
   const handleDelete = () => {
-    setAddBook(!addBook);
+    setAddTaskForm(!addTaskForm);
   };
   const handleAdd = () => {
-    setAddBook(!addBook);
+    setAddTaskForm(!addTaskForm);
   };
   return (
     <div className="flex justify-between w-full py-5">
@@ -23,12 +23,17 @@ function TaskHeader({ addBook, setAddBook }) {
   );
 }
 
-export default function TasksList({ addBook, setAddBook, tasks }) {
+export default function TasksList({
+  addTaskForm,
+  setAddTaskForm,
+  tasks,
+  setTasks,
+}) {
   return (
     <>
       <div className="w-full h-[42em] border rounded px-7 py-6">
-        <TaskHeader addBook={addBook} setAddBook={setAddBook} />
-        <Task tasks={tasks} />
+        <TaskHeader addTaskForm={addTaskForm} setAddTaskForm={setAddTaskForm} />
+        <Task tasks={tasks} setTasks={setTasks} />
       </div>
     </>
   );

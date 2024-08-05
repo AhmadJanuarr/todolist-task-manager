@@ -10,13 +10,13 @@ export default function FormInput({
   setDeadline,
   status,
   setStatus,
-  setAddBook,
+  setAddTaskForm,
 }) {
   const id = useId();
   const handleSubmit = (e) => {
     e.preventDefault();
     setTasks([...tasks, { id, task, deadline, status }]);
-    setAddBook(false);
+    setAddTaskForm(false);
   };
 
   return (
@@ -54,7 +54,7 @@ export default function FormInput({
         onChange={(e) => setStatus(e.target.value)}
       />
       <div className="flex justify-end gap-3 px-4 py-4">
-        <Button variant="danger" onClick={() => setAddBook(false)}>
+        <Button variant="danger" onClick={() => setAddTaskForm(false)}>
           Cancel
         </Button>
         <Button type="submit">Add Task</Button>

@@ -8,7 +8,7 @@ export default function TaskForm({
   setDeadline,
   status,
   setStatus,
-  setAddBook,
+  setAddTaskForm,
 }) {
   return (
     <div className="absolute flex flex-col items-center justify-center h-screen ">
@@ -22,7 +22,7 @@ export default function TaskForm({
           setDeadline={setDeadline}
           status={status}
           setStatus={setStatus}
-          setAddBook={setAddBook}
+          setAddTaskForm={setAddTaskForm}
         />
       </div>
     </div>
