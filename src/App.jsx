@@ -1,8 +1,7 @@
 import { Header } from "./component/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TasksList from "./component/Tasks";
 import TaskForm from "./component/Tasks/ModalTaskForm";
-import { useEffect } from "react";
 
 function App() {
   const [addTaskForm, setAddTaskForm] = useState(false);
@@ -12,23 +11,19 @@ function App() {
 
   const [tasks, setTasks] = useState(() => {
     const tasksFromLocalStorage = localStorage.getItem("tasks");
-    if (tasksFromLocalStorage) {
-      return JSON.parse(tasksFromLocalStorage);
-    } else {
-      return [];
-    }
+    return tasksFromLocalStorage ? JSON.parse(tasksFromLocalStorage) : [];
   });
 
   useEffect(() => {
-    if (tasks === undefined) {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  console.log(tasks);
 
   return (
     <>
-      <div className="relative flex justify-center w-screen h-screen bg-gray-300 font-kreon text-primary">
-        <div className="w-1/2">
+      <div className=" flex justify-center w-full h-full bg-gray-300 font-kreon text-primary ">
+        <div className="overflow-hidden px-3">
           <Header />
           <TasksList
             addTaskForm={addTaskForm}
