@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        mobile: "640px", // Mobile
+        mobile: "412px", // Mobile
         laptop: "1024px", // Laptop
         desktop: "1280px", // Desktop
       },
@@ -12,6 +12,7 @@ export default {
         kreon: ["Kreon", "sans-serif"],
       },
       colors: {
+        grayDark: "#FAF9F9",
         gray: "#929292",
         primary: "#515151",
         green: "#9AE2A5",
