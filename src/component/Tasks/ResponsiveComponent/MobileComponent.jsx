@@ -1,17 +1,15 @@
-import { useState } from "react";
-
-export default function MobileComponent({ tasks }) {
-  const [selectedTasks, setSelectedTasks] = useState([]);
-
+export default function MobileComponent({
+  selectedTasksById,
+  setSelectedTasksById,
+  tasks,
+}) {
   const handleCheckBoxChange = (taskId) => {
-    if (selectedTasks.includes(taskId)) {
-      setSelectedTasks(selectedTasks.filter((id) => id !== taskId));
+    if (selectedTasksById.includes(taskId)) {
+      setSelectedTasksById(selectedTasksById.filter((id) => id !== taskId));
     } else {
-      setSelectedTasks([...selectedTasks, taskId]);
+      setSelectedTasksById([...selectedTasksById, taskId]);
     }
   };
-
-  console.log(selectedTasks);
 
   const listItem = tasks.map((task) => {
     const { id, task: taskName, deadline, status } = task;
@@ -26,7 +24,7 @@ export default function MobileComponent({ tasks }) {
           <td className="px-2 text-gray " width={"5%"} rowSpan={4}>
             <input
               type="checkbox"
-              checked={selectedTasks.includes(id)}
+              checked={selectedTasksById.includes(id)}
               onChange={() => handleCheckBoxChange(id)}
             />
           </td>
