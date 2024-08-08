@@ -1,14 +1,25 @@
 import Button from "../Button";
 import Task from "./task";
 
-function TaskHeader({ addTaskForm, setAddTaskForm }) {
+function TaskHeader({
+  addTaskForm,
+  setAddTaskForm,
+  setTasks,
+  selectedTasksById,
+  setSelectedTasksById,
+}) {
   const handleDelete = () => {
-    setAddTaskForm(!addTaskForm);
+    setTasks((tasks) =>
+      tasks.filter((task) => !selectedTasksById.includes(task.id))
+    );
+    setSelectedTasksById([]);
   };
+
   const handleAdd = () => {
     setAddTaskForm(!addTaskForm);
   };
 
+  console.log(selectedTasksById);
   return (
     <div className="flex justify-between w-full py-5">
       <div className="hidden text-2xl">Tasks</div>
@@ -39,13 +50,27 @@ export default function TasksList({
   setAddTaskForm,
   tasks,
   setTasks,
+  selectedTasksById,
+  setSelectedTasksById,
 }) {
   return (
     <>
-      <div className="w-full desktop:h-[42em]  laptop:h-[20em]  rounded laptop:p-7 px-4 overflow-y-auto ">
+      <div className="w-full desktop:h-[42em] laptop:h-[20em] rounded laptop:p-7 px-4 overflow-y-auto ">
         <hr />
-        <TaskHeader addTaskForm={addTaskForm} setAddTaskForm={setAddTaskForm} />
-        <Task tasks={tasks} setTasks={setTasks} />
+        <TaskHeader
+          addTaskForm={addTaskForm}
+          setAddTaskForm={setAddTaskForm}
+          tasks={tasks}
+          setTasks={setTasks}
+          selectedTasksById={selectedTasksById}
+          setSelectedTasksById={setSelectedTasksById}
+        />
+        <Task
+          tasks={tasks}
+          setTasks={setTasks}
+          selectedTasksById={selectedTasksById}
+          setSelectedTasksById={setSelectedTasksById}
+        />
       </div>
     </>
   );
