@@ -8,7 +8,7 @@ function App() {
   const [task, setTask] = useState("");
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("");
-
+  const [selectedTasksById, setSelectedTasksById] = useState([]);
   const [tasks, setTasks] = useState(() => {
     const tasksFromLocalStorage = localStorage.getItem("tasks");
     return tasksFromLocalStorage ? JSON.parse(tasksFromLocalStorage) : [];
@@ -22,14 +22,16 @@ function App() {
 
   return (
     <>
-      <div className=" flex justify-center w-full h-full bg-gray-300 font-kreon text-primary ">
-        <div className="overflow-hidden px-3">
+      <div className="flex justify-center w-full h-full bg-gray-300 font-kreon text-primary">
+        <div className="px-3 overflow-hidden">
           <Header />
           <TasksList
             addTaskForm={addTaskForm}
-            setAddTaskForm={setAddTaskForm}
             tasks={tasks}
+            selectedTasksById={selectedTasksById}
+            setAddTaskForm={setAddTaskForm}
             setTasks={setTasks}
+            setSelectedTasksById={setSelectedTasksById}
           />
         </div>
 
