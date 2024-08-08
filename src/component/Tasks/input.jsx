@@ -11,14 +11,13 @@ export default function Input({
   if (type === "select") {
     return (
       <div className="flex justify-between w-full gap-3 px-3 py-2">
-        <label htmlFor={htmlFor} className="text-lg ">
-          {" "}
+        <label htmlFor={htmlFor} className="text-md">
           {label}
         </label>
         <select
           name={name}
           id={id}
-          className="w-1/2 px-3 py-1 border rounded"
+          className="px-2 py-1 border rounded text-md"
           value={value}
           onChange={onChange}
           required
@@ -35,8 +34,8 @@ export default function Input({
   }
 
   return (
-    <div className="flex justify-between w-full gap-3 px-3 py-2">
-      <label htmlFor={htmlFor} className="text-lg ">
+    <div className="flex flex-col w-full  px-3 py-2">
+      <label htmlFor={htmlFor} className="text-md">
         {label}
       </label>
       <input
@@ -47,7 +46,7 @@ export default function Input({
         onChange={onChange}
         placeholder={placeholder}
         required
-        className="w-1/2 px-3 py-1 border rounded"
+        className="w-full px-1 py-1 border rounded text-md"
       />
     </div>
   );

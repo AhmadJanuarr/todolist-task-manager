@@ -11,8 +11,8 @@ export default function TaskForm({
   setAddTaskForm,
 }) {
   return (
-    <div className="absolute flex flex-col items-center justify-center h-screen ">
-      <div className="py-6 px-7">
+    <div className="absolute flex flex-col items-center justify-center h-screen w-screen">
+      <div className="py-6 px-7 laptop:w-[36em] w-full">
         <FormInput
           tasks={tasks}
           setTasks={setTasks}

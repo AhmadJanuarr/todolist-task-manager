@@ -1,6 +1,5 @@
 import Input from "./input";
 import Button from "./../Button/index";
-import { useId } from "react";
 export default function FormInput({
   tasks,
   setTasks,
@@ -12,19 +11,27 @@ export default function FormInput({
   setStatus,
   setAddTaskForm,
 }) {
-  const id = useId();
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTasks([...tasks, { id, task, deadline, status }]);
+    const newTaks = {
+      id: Date.now(),
+      task,
+      deadline,
+      status,
+    };
+    setTasks([...tasks, newTaks]);
+    setTask("");
+    setDeadline("");
+    setStatus("");
     setAddTaskForm(false);
   };
 
   return (
     <form
-      className="flex flex-col w-[36em] border rounded bg-white"
+      className="flex flex-col w-full bg-white border rounded"
       onSubmit={handleSubmit}
     >
-      <h1 className="px-3 py-3 text-3xl text-center">Add Task</h1>
+      <h1 className="px-3 py-3 text-2xl text-center">Add Task</h1>
       <Input
         htmlFor="name"
         type="text"
