@@ -22,8 +22,8 @@ function App() {
 
   return (
     <>
-      <div className="flex justify-center w-full h-full bg-gray-300 font-kreon text-primary">
-        <div className="px-3 overflow-hidden">
+      <div className="flex justify-center w-full bg-gray-300  h-[100vh] font-kreon text-primary">
+        <div className="px-3 overflow-hidden laptop:w-1/2">
           <Header />
           <TasksList
             addTaskForm={addTaskForm}
