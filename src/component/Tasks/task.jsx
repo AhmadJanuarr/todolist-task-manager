@@ -3,7 +3,7 @@ import MobileComponent from "./ResponsiveComponent/MobileComponent";
 
 export default function Task({
   tasks,
-  setTasks,
+
   selectedTasksById,
   setSelectedTasksById,
 }) {
