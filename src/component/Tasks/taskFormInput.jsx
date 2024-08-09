@@ -28,7 +28,7 @@ export default function FormInput({
 
   return (
     <form
-      className="flex flex-col w-full bg-white border rounded"
+      className="flex flex-col w-full bg-white border rounded "
       onSubmit={handleSubmit}
     >
       <h1 className="px-3 py-3 text-2xl text-center">Add Task</h1>
