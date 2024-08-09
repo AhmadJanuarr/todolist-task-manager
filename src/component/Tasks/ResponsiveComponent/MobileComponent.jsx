@@ -25,7 +25,7 @@ export default function MobileComponent({
 
     return (
       <table
-        className="w-full mb-5 text-left border-separate border-gray-300 rounded text-md bg-grayDark border-spacing-2"
+        className="w-full mb-5 text-left border-separate border-gray-300 rounded laptop:hidden text-md bg-grayDark border-spacing-2"
         key={id}
       >
         <tbody>
