@@ -2,6 +2,7 @@ export default function MobileComponent({
   selectedTasksById,
   setSelectedTasksById,
   tasks,
+  setTasks,
 }) {
   const handleCheckBoxChange = (taskId) => {
     if (selectedTasksById.includes(taskId)) {
@@ -17,10 +18,11 @@ export default function MobileComponent({
     const className = "px-2 text-center border rounded-xl";
     const statusClasName =
       status === "In Progress"
-        ? `text-cyan-500 ${className}`
+        ? `bg-blue text-zinc-600 border-none ${className}`
         : status === "Not Progress"
-        ? `text-rose-500  ${className}`
-        : `text-emerald-500  ${className}`;
+        ? `bg-gray text-zinc-600 border-none  ${className}`
+        : `bg-green text-zinc-600 border-none ${className}`;
+
     return (
       <table
         className="w-full mb-5 text-left border-separate border-gray-300 rounded text-md bg-grayDark border-spacing-2"
@@ -28,7 +30,7 @@ export default function MobileComponent({
       >
         <tbody>
           <tr>
-            <td className="px-2 text-gray " width={"5%"} rowSpan={4}>
+            <td className="px-2 text-zinc-400" width={"5%"} rowSpan={4}>
               <input
                 type="checkbox"
                 checked={selectedTasksById.includes(id)}
@@ -37,17 +39,17 @@ export default function MobileComponent({
             </td>
           </tr>
           <tr className="text-[12px]">
-            <th className="text-gray">Task Name</th>
+            <th className="text-zinc-400">Task Name</th>
             <td width={"70%"}>{taskName}</td>
           </tr>
 
           <tr className=" text-[12px] ">
-            <th className="text-gray">Deadline</th>
+            <th className="text-zinc-400">Deadline</th>
             <td>{deadline}</td>
           </tr>
 
-          <tr className="text-[12px] ">
-            <th className="text-gray">Status</th>
+          <tr className="text-[12px]">
+            <th className="text-zinc-400">Status</th>
             <td>
               <button className={statusClasName}>●{status}</button>
             </td>
