@@ -26,7 +26,7 @@ function TaskHeader({
       <select
         name="name"
         id="name"
-        className="w-[10em] border rounded text-md border-gray text-green"
+        className="w-[10em] border rounded text-[11px] border-gray text-green"
       >
         <option value="Show All Tasks">Show All Tasks</option>
         <option value="Show In Progress">Show in Progress</option>

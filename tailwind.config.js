@@ -13,7 +13,7 @@ export default {
       },
       colors: {
         grayDark: "#FAF9F9",
-        gray: "#929292",
+        gray: "#EDEDED",
         primary: "#515151",
         green: "#9AE2A5",
         red: "#EB9393",

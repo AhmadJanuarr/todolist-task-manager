@@ -9,7 +9,7 @@ export default function Task({
 }) {
   return (
     <div className="overflow-y-auto ">
-      <div className="w-full  h-[26em]">
+      <div className="w-full h-[26em]">
         {/* <DesktopComponent tasks={tasks} /> */}
         <MobileComponent
           tasks={tasks}
