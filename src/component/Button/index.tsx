@@ -1,4 +1,12 @@
-export default function Button({ children, variant, onClick, type }) {
+interface ButtonTypes {
+  children: string;
+  variant?: "danger" | "success";
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset"
+}
+
+
+export default function Button({ children, variant, onClick, type }: ButtonTypes) {
   const variantClasses = variant === "danger" ? "bg-red" : "bg-green";
   return (
     <button

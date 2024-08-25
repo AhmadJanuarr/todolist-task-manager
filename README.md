@@ -10,7 +10,7 @@
 
 ### Build with Stack
 
-- ReactJs
+- ReactJs + Typescripts
 - TailwindCss
 
 ### Feature

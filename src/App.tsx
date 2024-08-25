@@ -5,10 +5,6 @@ import TaskForm from "./component/Tasks/ModalTaskForm";
 
 function App() {
   const [addTaskForm, setAddTaskForm] = useState(false);
-  const [task, setTask] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [status, setStatus] = useState("");
-  const [selectedTasksById, setSelectedTasksById] = useState([]);
   const [tasks, setTasks] = useState(() => {
     const tasksFromLocalStorage = localStorage.getItem("tasks");
     return tasksFromLocalStorage ? JSON.parse(tasksFromLocalStorage) : [];
@@ -18,7 +14,7 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  console.log(tasks);
+
 
   return (
     <>
@@ -27,24 +23,12 @@ function App() {
           <Header />
           <TasksList
             addTaskForm={addTaskForm}
-            tasks={tasks}
-            selectedTasksById={selectedTasksById}
             setAddTaskForm={setAddTaskForm}
-            setTasks={setTasks}
-            setSelectedTasksById={setSelectedTasksById}
           />
         </div>
 
         {addTaskForm && (
           <TaskForm
-            tasks={tasks}
-            setTasks={setTasks}
-            task={task}
-            setTask={setTask}
-            deadline={deadline}
-            setDeadline={setDeadline}
-            status={status}
-            setStatus={setStatus}
             setAddTaskForm={setAddTaskForm}
           />
         )}

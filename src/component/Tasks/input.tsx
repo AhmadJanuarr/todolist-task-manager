@@ -1,3 +1,5 @@
+import { InputTypes } from "../../types/inputTypes";
+
 export default function Input({
   type,
   name,
@@ -7,7 +9,7 @@ export default function Input({
   label,
   value,
   onChange,
-}) {
+}: InputTypes) {
   if (type === "select") {
     return (
       <div className="flex justify-between w-full gap-3 px-3 py-2">
