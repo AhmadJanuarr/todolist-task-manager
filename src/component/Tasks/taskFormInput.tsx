@@ -1,21 +1,42 @@
 import Input from "./input";
 import Button from "../Button/index";
-import { useTasksStore } from "../../stores/taskStore";
+import { useTaskForm, useTasksStore } from "../../stores/taskStore";
 import { useState } from "react";
-export default function FormInput({
-  setAddTaskForm,
-}) {
-  const [title, setTitle] = useState(" ")
-  const [deadline, setDeadline] = useState(" ")
-  const [status, setStatus] = useState(" ")
-  const [tasks, upTasks] = useTasksStore((state) => [state.tasks, state.upTasks]);
+import { Task } from "../../types/task";
 
 
+export default function FormInput() {
+  const [title, setTitle] = useState(" ");
+  const [deadline, setDeadline] = useState(" ");
+  const [status, setStatus] = useState(" ");
 
-  const handleSubmit = (e: any) => {
+  const [tasks, addTask] = useTasksStore((state) => [
+    state.tasks,
+    state.addTask,
+  ]);
+  console.log('tasks:', tasks);
+  console.log('addTask:', addTask);
+
+
+  const upForm = useTaskForm((state) => state.upForm);
+  const handleCancel = () => {
+    upForm()
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    setAddTaskForm(false);
+    const newTask: Task =
+    {
+      id: Date.now(),
+      title,
+      deadline,
+      status,
+    }
+    addTask(newTask);
+    upForm()
+    setTitle("");
+    setDeadline("");
+    setStatus("");
   };
 
   return (
@@ -32,7 +53,9 @@ export default function FormInput({
         placeholder="Task name..."
         label="Task Name"
         value={title}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setTitle(e.target.value)
+        }
       />
       <Input
         htmlFor="deadline"
@@ -41,7 +64,9 @@ export default function FormInput({
         id="deadline"
         label="Deadline"
         value={deadline}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDeadline(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setDeadline(e.target.value)
+        }
       />
       <Input
         htmlFor="status"
@@ -50,10 +75,12 @@ export default function FormInput({
         id="status"
         label="Status"
         value={status}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatus(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setStatus(e.target.value)
+        }
       />
       <div className="flex justify-end gap-3 px-4 py-4">
-        <Button variant="danger" onClick={() => setAddTaskForm(false)}>
+        <Button variant="danger" onClick={handleCancel}>
           Cancel
         </Button>
         <Button type="submit">Add Task</Button>
