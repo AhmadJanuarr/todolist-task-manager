@@ -1,36 +1,29 @@
-export default function DesktopComponent({
-  tasks,
-  selectedTasksById,
-  setSelectedTasksById,
-}) {
-  const handleCheckBoxChange = (taskId) => {
-    if (selectedTasksById.includes(taskId)) {
-      setSelectedTasksById(selectedTasksById.filter((id) => id !== taskId));
-    } else {
-      setSelectedTasksById([...selectedTasksById, taskId]);
-    }
-  };
+import { useTasksStore } from "../../../stores/taskStore";
 
+export default function DesktopComponent() {
+
+  const [tasks] = useTasksStore((state) => [state.tasks]);
   const listItem = tasks.map((task) => {
-    const { id, task: taskName, deadline, status } = task;
+    const { id, title, deadline, status } = task;
+
     const truncatedTaskName =
-      taskName.length > 20 ? taskName.substring(0, 20) + "..." : taskName;
+      title.length > 20 ? title.substring(0, 20) + "..." : title;
 
     const className = "px-3 text-center rounded-xl";
     const statusClassName =
       status === "In Progress"
         ? `bg-blue text-zinc-600 border-none ${className}`
         : status === "Not Progress"
-        ? `bg-gray text-zinc-600 border-none ${className}`
-        : `bg-green text-zinc-600 border-none ${className}`;
+          ? `bg-gray text-zinc-600 border-none ${className}`
+          : `bg-green text-zinc-600 border-none ${className}`;
 
     return (
       <tr key={id} className="hover:bg-grayDark text-[14px] py-2">
         <td className="px-2 py-2 text-gray" width="5%">
           <input
             type="checkbox"
-            checked={selectedTasksById.includes(id)}
-            onChange={() => handleCheckBoxChange(id)}
+          // checked={ }
+          // onChange={ }
           />
         </td>
         <td width="55%" className="py-2">
@@ -40,7 +33,7 @@ export default function DesktopComponent({
           {deadline}
         </td>
         <td width="20%">
-          <button className={`${statusClassName} `}>● {status}</button>
+          <button className={statusClassName}>● {status}</button>
         </td>
       </tr>
     );
@@ -54,10 +47,10 @@ export default function DesktopComponent({
           style={{ position: "sticky", top: 0, zIndex: 1 }}
         >
           <tr>
-            <th className="px-2" width="5%"></th>
-            <th width="55%">Task Name</th>
-            <th width="20%">Deadline</th>
-            <th width="20%">Status</th>
+            <th style={{ width: '5%' }} className="px-2"></th>
+            <th style={{ width: '55%' }}>Task Name</th>
+            <th style={{ width: '20%' }}>Deadline</th>
+            <th style={{ width: '20%' }}>Status</th>
           </tr>
         </thead>
         <tbody>{listItem}</tbody>
