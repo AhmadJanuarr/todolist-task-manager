@@ -1,21 +1,15 @@
-import { useTasksStore } from "../../stores/taskStore";
-import { useShallow } from "zustand/react/shallow";
+import { useTaskForm, useTasksStore } from "../../stores/taskStore";
 import Button from "../Button";
 import Task from "./task";
 
-interface FormTypes {
-  addTaskForm: boolean;
-  setAddTaskForm: React.Dispatch<React.SetStateAction<boolean>>;
-}
+function TaskHeader() {
 
-function TaskHeader({ addTaskForm, setAddTaskForm }: FormTypes) {
+  const upForm = useTaskForm((state) => state.upForm);
   const handleAdd = () => {
-    setAddTaskForm(!addTaskForm);
-  };
+    upForm()
+  }
 
-  const select = useTasksStore((state) => state.action.selected);
-
-  const deleteTask = useTasksStore((state) => state.action.deleteTask);
+  const deleteTask = useTasksStore((state) => state.deleteTask);
   const handleDelete = (id: number) => {
     deleteTask(id)
   }
@@ -32,7 +26,7 @@ function TaskHeader({ addTaskForm, setAddTaskForm }: FormTypes) {
         <option value="Show Done">Show Done</option>
       </select>
       <div className="flex gap-3">
-        <Button variant="danger" onClick={handleDelete()}>
+        <Button variant="danger" onClick={handleDelete}>
           Delete
         </Button>
         <Button variant="success" onClick={handleAdd}>
@@ -43,25 +37,13 @@ function TaskHeader({ addTaskForm, setAddTaskForm }: FormTypes) {
   );
 }
 
-export default function TasksList({
-  addTaskForm,
-  setAddTaskForm,
-
-}) {
+export default function TasksList({ }) {
   return (
     <>
       <div className="w-full desktop:h-[42em] laptop:h-[20em] rounded laptop:p-7 px-4 overflow-y-auto">
         <hr />
-        <TaskHeader
-          addTaskForm={addTaskForm}
-          setAddTaskForm={setAddTaskForm}
-        />
-        <Task
-          tasks={tasks}
-          setTasks={setTasks}
-          selectedTasksById={selectedTasksById}
-          setSelectedTasksById={setSelectedTasksById}
-        />
+        <TaskHeader />
+        <Task />
       </div>
     </>
   );
