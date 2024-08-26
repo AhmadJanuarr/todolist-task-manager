@@ -24,7 +24,7 @@ export default function Input({
           onChange={onChange}
           required
         >
-          <option value="" disabled>
+          <option value="">
             Select status...
           </option>
           <option value="In Progress">In Progress</option>
