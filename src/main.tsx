@@ -4,7 +4,8 @@ import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorNotFound from "./component/404/index.jsx";
-
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./theme.palette.js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,8 @@ if (!rootElement) {
 }
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
