@@ -1,11 +1,10 @@
-import { Header } from "./component/Header";
+import Header from "./component/Header";
 import TasksList from "./component/Tasks";
 import TaskForm from "./component/Tasks/ModalTaskForm";
-import { useTaskForm } from "./stores/taskStore";
+import { useModalStore } from "./stores/modalStore";
 
 function App() {
-  const [form] = useTaskForm((state) => [state.form]);
-
+  const [modalAddTask] = useModalStore((state) => [state.modalAddTask]);
   return (
     <>
       <div className="flex justify-center w-full bg-gray-300  h-[100vh] font-kreon text-primary">
@@ -13,10 +12,7 @@ function App() {
           <Header />
           <TasksList />
         </div>
-
-        {form && (
-          <TaskForm />
-        )}
+        {modalAddTask && <TaskForm />}
       </div>
     </>
   );
