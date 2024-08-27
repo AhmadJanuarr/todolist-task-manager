@@ -5,8 +5,8 @@ export default function Task({
 
 }) {
   return (
-    <div className="overflow-y-scroll ">
-      <div className="w-full h-[26em] laptop:h-[20em]">
+    <div className="overflow-y-scroll">
+      <div className="w-full h-[26em] laptop:h-[30em]">
         <DesktopComponent />
         <MobileComponent />
       </div>
