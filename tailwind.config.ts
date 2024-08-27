@@ -9,7 +9,8 @@ export default {
         desktop: "1280px", // Desktop
       },
       fontFamily: {
-        kreon: ["Kreon", "sans-serif"],
+        sans: ["Open Sans", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       colors: {
         grayDark: "#FAF9F9",
