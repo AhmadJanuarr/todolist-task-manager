@@ -1,15 +1,15 @@
 import { StateCreator, create } from "zustand";
-import { TasksTypes } from "../types/task";
+import { FilteredTypes, SelectedTypes, TasksTypes } from "../types/task";
 import { persist } from "zustand/middleware";
 
 const createTaskStore: StateCreator<TasksTypes> = (set) => ({
     tasks: [],
     upTasks: () => set((state) => ({ tasks: [...state.tasks] })),
     addTask: (newTask) => set((state) => ({ tasks: [...state.tasks, newTask] })),
-    deleteTask: (id) =>
+    deleteTask: (id: number[]) =>
         set((state) => ({
             ...state,
-            tasks: state.tasks.filter((task) => task.id !== id),
+            tasks: state.tasks.filter((task) => !id.includes(task.id)),
         })),
     updateTask: (id, updateTask) =>
         set((state) => ({
@@ -19,19 +19,30 @@ const createTaskStore: StateCreator<TasksTypes> = (set) => ({
         })),
 });
 
+
+
+
+const createSelectedStore: StateCreator<SelectedTypes> = (set, get) => ({
+    selectedId: [],
+    toggleSelected: (id: number) => {
+        const { selectedId } = get();
+        const newSelectedId = selectedId.includes(id)
+            ? selectedId.filter((item) => item !== id)
+            : [...selectedId, id];
+        set({ selectedId: newSelectedId });
+    },
+});
+
+//filtering name
+const createFilteredStore: StateCreator<FilteredTypes> = (set) => ({
+    filtered: "All Tasks",
+    filteredName: (filtered) => set((state) => ({ ...state, filtered })),
+})
+
+export const useFilteredStore = create<FilteredTypes>(createFilteredStore);
+export const useSelectedStore = create<SelectedTypes>(createSelectedStore);
 export const useTasksStore = create<TasksTypes>()(
     persist(createTaskStore, {
         name: "tasks",
     })
 );
-
-interface TaskFormTypes {
-    form: boolean;
-    upForm: () => void;
-}
-const createTaskForm: StateCreator<TaskFormTypes> = (set) => ({
-    form: false,
-    upForm: () => set((state) => ({ form: !state.form })),
-});
-
-export const useTaskForm = create<TaskFormTypes>(createTaskForm);
