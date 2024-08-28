@@ -17,6 +17,8 @@ export default function MobileComponent() {
       task.status.toLowerCase().includes(filtered.toLowerCase())
     );
   }
+
+
   const [isDarkMode] = useDarkModeStore((state) => [state.isDarkMode]);
 
 

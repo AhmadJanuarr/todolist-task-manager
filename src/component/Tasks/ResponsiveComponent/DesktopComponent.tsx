@@ -32,7 +32,7 @@ export default function DesktopComponent() {
   }
   if (filteredTasks.length === 0) {
     return (
-      <div className="text-center text-gray-500 py-4">
+      <div className="flex justify-center items-center text-gray-500 h-full" >
         Tidak ada task dengan status "{filtered}"
       </div>
     );
