@@ -11,11 +11,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContentText from "@mui/material/DialogContentText";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-
-
-
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Alert from '@mui/material/Alert';
 
 export default function TaskForm() {
   const [title, setTitle] = useState("");
@@ -49,6 +47,7 @@ export default function TaskForm() {
   return (
     <div className="absolute flex flex-col items-center justify-center w-screen h-screen">
       <div className="py-6 px-7 laptop:w-[36em] w-full z-20">
+
         <Dialog
           open={modalAddTask}
           onClose={closeModalAddTask}
@@ -102,9 +101,7 @@ export default function TaskForm() {
                 labelId="status-label"
                 id="status-select"
                 value={status}
-                onChange={(e: SelectChangeEvent) =>
-                  setStatus(e.target.value)
-                }
+                onChange={(e: SelectChangeEvent) => setStatus(e.target.value)}
                 displayEmpty
               >
                 <MenuItem value="">
