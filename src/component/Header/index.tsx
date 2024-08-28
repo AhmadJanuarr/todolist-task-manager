@@ -1,4 +1,4 @@
-import img from "../../../public/image/img1.png";
+import img from "../../../public/image/img1.png" assert { type: "url" };
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
