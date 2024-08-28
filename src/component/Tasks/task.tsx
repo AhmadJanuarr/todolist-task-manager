@@ -1,12 +1,10 @@
 import DesktopComponent from "./ResponsiveComponent/DesktopComponent";
 import MobileComponent from "./ResponsiveComponent/MobileComponent";
 
-export default function Task({
-
-}) {
+export default function Task() {
   return (
-    <div className="overflow-y-scroll">
-      <div className="w-full h-[26em] laptop:h-[30em]">
+    <div className="scrollbar-hide overflow-y-auto">
+      <div className={`w-full h-[26em] desktop:h-[30em] laptop:h-[19em]`}>
         <DesktopComponent />
         <MobileComponent />
       </div>
