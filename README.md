@@ -2,15 +2,21 @@
 
 ### Devices Mobile
 
-<img src="./src/assets/image(1).png">
+<img src="./src/assets/image5.png">
 
-### Devices Dekstop
+### Devices Dekstop light
 
-<img src="./src/assets/image(2).png">
+<img src="./src/assets/image4.png">
+
+### Devices Dekstop Darkmode
+
+<img src="./src/assets/image3.png">
 
 ### Build with Stack
 
 - ReactJs + Typescripts
+- Material UI
+- Zustand
 - TailwindCss
 
 ### Feature
@@ -24,15 +30,15 @@
 - Delete Tasks
   - [x] Users can delete existing tasks by pressing the “Delete” button next to the task.
 - Marking Tasks as Completed
-  - [ ] Users can mark tasks as complete by checking the box next to the task.
+  - [x] Users can mark tasks as complete by checking the box next to the task.
 - Filtering Tasks
-  - [ ] Users can filter the task list to only show incomplete or completed tasks.
-  - [ ] Users can also choose to view all tasks without filters.
+  - [x] Users can filter the task list to only show incomplete or completed tasks.
+  - [x] Users can also choose to view all tasks without filters.
 - Responsive
   - [x] Mobile devices
-  - [ ] Laptop devices
-  - [ ] Desktop Devices
+  - [x] Laptop devices
+  - [x] Desktop Devices
 
 ### What i get
 
-....
+My first project used React JS and Typscript plus state management using the library from Zustand. I worked on it for about 2 days. I gained very important knowledge about the front using a stack like this.
