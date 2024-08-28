@@ -19,9 +19,6 @@ const createTaskStore: StateCreator<TasksTypes> = (set) => ({
         })),
 });
 
-
-
-
 const createSelectedStore: StateCreator<SelectedTypes> = (set, get) => ({
     selectedId: [],
     toggleSelected: (id: number) => {
@@ -37,7 +34,7 @@ const createSelectedStore: StateCreator<SelectedTypes> = (set, get) => ({
 const createFilteredStore: StateCreator<FilteredTypes> = (set) => ({
     filtered: "All Tasks",
     filteredName: (filtered) => set((state) => ({ ...state, filtered })),
-})
+});
 
 export const useFilteredStore = create<FilteredTypes>(createFilteredStore);
 export const useSelectedStore = create<SelectedTypes>(createSelectedStore);
